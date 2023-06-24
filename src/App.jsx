@@ -6,7 +6,7 @@ function App() {
     const [coin, setCoin] = useState({head: 0, tail: 0});
 
     const onClickChange = () => {
-        let random = Math.floor(Math.random() * 2);
+        const random = Math.floor(Math.random() * 2);
         if (random === 0){
             setResult('https://upload.wikimedia.org/wikipedia/commons/c/cd/S_Half_Dollar_Obverse_2016.jpg');
             setCoin((prev) => ({...prev, head: prev.head+1}));
@@ -20,7 +20,7 @@ function App() {
       <div className='App'>
         <h1 className='app-title'>Coin Flipper</h1>
           <div className="app-media">
-          <img className='app-image' src={result} alt='coin-side'/>
+            <img className='app-image' src={result} alt='coin-side'/>
           </div>
           <div className="app-content">
               <p className="head-result">Head: {coin.head}</p>
@@ -28,7 +28,7 @@ function App() {
               <p className="total-result">Total: {coin.head+coin.tail}</p>
           </div>
           <div className="app-actions">
-          <button onClick={onClickChange}>Flip the coin</button>
+            <button onClick={onClickChange}>Flip the coin</button>
           </div>
       </div>
   )
