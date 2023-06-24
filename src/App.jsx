@@ -3,19 +3,19 @@ import {useState} from "react";
 
 function App() {
     const [result, setResult] = useState('https://upload.wikimedia.org/wikipedia/commons/c/cd/S_Half_Dollar_Obverse_2016.jpg');
-    const [head, setHead] = useState(0);
-    const [tail, setTail] = useState(0);
+    const [coin, setCoin] = useState({head: 0, tail: 0});
 
     const onClickChange = () => {
         let random = Math.floor(Math.random() * 2);
         if (random === 0){
             setResult('https://upload.wikimedia.org/wikipedia/commons/c/cd/S_Half_Dollar_Obverse_2016.jpg');
-            setHead(head+1);
+            setCoin((prev) => ({...prev, head: prev.head+1}));
         }else {
             setResult('https://media.geeksforgeeks.org/wp-content/uploads/20200916123125/tails-200x200.jpg');
-            setTail(tail+1);
+            setCoin((prev) => ({...prev, tail: prev.tail+1}));
         }
     }
+
   return (
       <div className='App'>
         <h1 className='app-title'>Coin Flipper</h1>
@@ -23,15 +23,14 @@ function App() {
           <img className='app-image' src={result} alt='coin-side'/>
           </div>
           <div className="app-content">
-              <p className="head-result">Head: {head}</p>
-              <p className="tail-result">Tail: {tail}</p>
-              <p className="total-result">Total: {head+tail}</p>
+              <p className="head-result">Head: {coin.head}</p>
+              <p className="tail-result">Tail: {coin.tail}</p>
+              <p className="total-result">Total: {coin.head+coin.tail}</p>
           </div>
           <div className="app-actions">
           <button onClick={onClickChange}>Flip the coin</button>
           </div>
       </div>
-
   )
 }
 
